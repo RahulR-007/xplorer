@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-plorer - Explore the Unknown</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="hideLoadingScreen()">
+
+    <!-- Full Page Loading Screen -->
+    <div id="full-loading-screen">
+        <div class="spinner"></div>
+        <p>Loading X-plorer...</p>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">X-plorer</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="pages/about.html">About</a></li>
+                <li><a href="pages/visit.html">Visit</a></li>
+                <li><a href="pages/contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">&#9776;</div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="explore-section">
+            <!-- Left-Aligned Text -->
+            <div class="text-content">
+                <h1>
+                    <span class="explore">Embark on a Journey</span><br> 
+                    <span class="unknown">Beyond Imagination<span class="exclaim">.</span></span>
+                </h1>
+                <p>Step into the world’s most breathtaking monuments through the power of immersive 3D exploration.</p>
+                <button class="visit-btn" onclick="visitNow()">Begin Your Adventure</button>
+            </div>
+
+            <!-- 3D Model -->
+            <div class="model-container">
+                <model-viewer 
+                    src="assets/stylized_planet.glb" 
+                    auto-rotate 
+                    camera-controls 
+                    ar 
+                    shadow-intensity="1"
+                    disable-zoom 
+                    interaction-prompt="none"
+                    disable-pan 
+                    disable-tap>
+                </model-viewer>
+            </div>
+            
+            
+            </div>
+
+            <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 X-plorer | Explore the world like never before | RAHUL | Version 1.1</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
