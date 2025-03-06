@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyramids of Giza - X-Plorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">X-Plorer</div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../pages/about.html">About</a></li>
+            <li><a href="../pages/visit.html" class="active">Visit</a></li>
+            <li><a href="../pages/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <img src="assets/pyramids.jpg" alt="Pyramids of Giza">
+            <h1>Pyramids of Giza</h1>
+            <div class="hero-buttons">
+                <button onclick="scrollToSection('explore')">3D Explore</button>
+                <button onclick="scrollToSection('review')">Review</button>
+                <button onclick="scrollToSection('location')">Location</button>
+            </div>
+        </section>
+
+        <!-- 3D Explore Section -->
+        <section id="explore" class="section">
+            <h2>3D Explore</h2>
+            <model-viewer 
+                    src="assets/pyramid.glb" 
+                    auto-rotate 
+                    camera-controls 
+                    ar 
+                    shadow-intensity="1"
+                    disable-zoom 
+                    interaction-prompt="none"
+                    disable-pan 
+                    disable-tap>
+            </model-viewer>
+            <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+        </section>
+
+        <!-- Review Section -->
+        <section id="review" class="section">            
+            <div class="description-container">
+                <h2>Description and Review</h2>
+                <p><strong>📍 Location:</strong></p>
+                <p>The Pyramids of Giza are located in <strong>Giza, Egypt</strong>, on the outskirts of Cairo.</p>
+
+                <p><strong>🏛️ Historical Significance:</strong></p>
+                <p>Constructed over **4,500 years ago**, the pyramids are one of the **Seven Wonders of the Ancient World**. The most famous pyramid, the **Great Pyramid of Khufu**, was built around **2600 BC**.</p>
+
+                <p><strong>🏗️ Architectural Marvel:</strong></p>
+                <ul>
+                    <li>Built using **2.3 million limestone blocks**, some weighing up to **80 tons**.</li>
+                    <li>The pyramids align with the **Orion constellation**, showcasing advanced Egyptian astronomy.</li>
+                    <li>The **Great Pyramid was originally 146.6 meters** tall (now 138.8m due to erosion).</li>
+                </ul>
+
+                <p><strong>🌍 Cultural & Touristic Importance:</strong></p>
+                <ul>
+                    <li>It is **one of the most visited monuments in the world**, attracting **millions of tourists annually**.</li>
+                    <li>The pyramids serve as a **testament to ancient Egyptian engineering and culture**.</li>
+                </ul>
+
+                <p><strong>⭐ Fun Facts:</strong></p>
+                <ul>
+                    <li>✅ The **oldest and largest** pyramid belongs to Pharaoh **Khufu (Cheops)**.</li>
+                    <li>✅ The pyramids were originally covered in **smooth white limestone**, which reflected sunlight.</li>
+                    <li>✅ The **mystery of their construction** still puzzles historians and scientists today.</li>
+                </ul>
+            </div>
+            
+            <div class="google-reviews" style="display: flex; justify-content: center; margin-top: 60px;">
+                <a href="https://www.tripadvisor.com/Attraction_Review-g294202-d317746-Reviews-Pyramids_of_Giza-Giza_Giza_Governorate.html" target="_blank">
+                    <img src="assets/pyramids.jpg" alt="TripAdvisor Reviews" style="width: 300px; height: 200px; border-radius: 10px; box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);">
+                </a>
+            </div>
+
+        </section>
+
+        <!-- Location Section -->
+        <section id="location" class="section">
+            <h2>Location</h2>
+            <div style="display: flex; justify-content: center; align-items: center; width: 100%; padding: 40px 0;">
+                <div id="embed-map-canvas" style="width: 900px; height: 400px; max-width: 90%; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);">
+                    <iframe 
+                        style="height: 100%; width: 100%; border: 0; border-radius: 10px;" 
+                        frameborder="0" 
+                        allowfullscreen 
+                        src="https://www.google.com/maps/embed/v1/place?q=Pyramids+of+Giza,+Al+Giza+Desert,+Giza+Governorate,+Egypt&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 X-Plorer | Explore the world like never before</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
