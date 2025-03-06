@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     function visitNow() {
-        window.location.href = "pages/signin.html";
+        window.location.href = "visit/index.html";
     }
 
     function hideLoadingScreen() {
