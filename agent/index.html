@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Dashboard - X-Plorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">X-Plorer - Agent Panel</div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../pages/visit.html">Visit</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <h2>Add New Location</h2>
+        <form id="uploadForm">
+            <label for="placeName">Place Name:</label>
+            <input type="text" id="placeName" required>
+
+            <label for="locationDesc">📍 Location:</label>
+            <textarea id="locationDesc" rows="2" required></textarea>
+
+            <label for="historyDesc">🏛️ Historical Significance:</label>
+            <textarea id="historyDesc" rows="3" required></textarea>
+
+            <label for="architectureDesc">🏗️ Architectural Marvel:</label>
+            <textarea id="architectureDesc" rows="3" required></textarea>
+
+            <label for="cultureDesc">🌍 Cultural & Touristic Importance:</label>
+            <textarea id="cultureDesc" rows="3" required></textarea>
+
+            <label for="funFacts">⭐ Fun Facts (Comma-separated):</label>
+            <input type="text" id="funFacts" required>
+
+            <label for="imageUpload">Upload Image:</label>
+            <input type="file" id="imageUpload" accept="image/*" required>
+
+            <label for="modelUpload">Upload 3D Model (GLB):</label>
+            <input type="file" id="modelUpload" accept=".glb" required>
+
+            <label for="location">Google Maps Location Link:</label>
+            <input type="text" id="location" placeholder="Paste Google Maps link here" required>
+
+            <button type="submit">Upload & Generate Page</button>
+        </form>
+        
+        <div id="successMessage" class="hidden">
+            <p>Place added successfully! <a id="newPageLink" href="#">View Page</a></p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
