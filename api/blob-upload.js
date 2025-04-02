@@ -1,43 +1,23 @@
-// /api/blob-upload.js
-import { put } from '@vercel/blob';
-import { nanoid } from 'nanoid';
+import { put } from "@vercel/blob";
+import { nanoid } from "nanoid";
 
 export const config = {
   api: {
-    bodyParser: false, // we handle form data manually
+    bodyParser: false,
   },
 };
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).send("Only POST allowed");
-  }
+  if (req.method !== "POST") return res.status(405).end();
 
-  try {
-    const busboy = require('busboy');
-    const bb = busboy({ headers: req.headers });
+  const file = req.body;
+  const filename = req.headers["x-filename"];
+  const extension = filename.split(".").pop();
+  const blobName = `${filename.split(".")[0]}-${nanoid()}.${extension}`;
 
-    let fileBuffer = Buffer.from([]);
-    let fileName = '';
+  const { url } = await put(blobName, file, {
+    access: "public",
+  });
 
-    bb.on('file', (_, file, info) => {
-      fileName = `${nanoid()}-${info.filename}`;
-      file.on('data', (data) => {
-        fileBuffer = Buffer.concat([fileBuffer, data]);
-      });
-    });
-
-    bb.on('finish', async () => {
-      const blob = await put(`uploads/${fileName}`, fileBuffer, {
-        access: 'public',
-      });
-
-      res.status(200).json({ url: blob.url });
-    });
-
-    req.pipe(bb);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Upload failed");
-  }
+  res.status(200).json({ url });
 }
