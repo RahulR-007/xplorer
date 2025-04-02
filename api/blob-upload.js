@@ -8,16 +8,22 @@ export const config = {
 };
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") return res.status(405).end();
+  if (req.method !== "POST") {
+    return res.status(405).send("Method not allowed");
+  }
 
-  const file = req.body;
-  const filename = req.headers["x-filename"];
-  const extension = filename.split(".").pop();
-  const blobName = `${filename.split(".")[0]}-${nanoid()}.${extension}`;
+  try {
+    const filename = req.headers["x-filename"];
+    const extension = filename.split(".").pop();
+    const blobName = `${filename.split(".")[0]}-${nanoid()}.${extension}`;
 
-  const { url } = await put(blobName, file, {
-    access: "public",
-  });
+    const { url } = await put(blobName, req, {
+      access: "public",
+    });
 
-  res.status(200).json({ url });
+    return res.status(200).json({ url });
+  } catch (err) {
+    console.error("Upload error:", err);
+    return res.status(500).send("A server error occurred.");
+  }
 }
