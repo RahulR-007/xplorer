@@ -1,4 +1,3 @@
-// /api/blob-upload.js
 import { put } from "@vercel/blob";
 import { nanoid } from "nanoid";
 
