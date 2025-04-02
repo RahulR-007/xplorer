@@ -1,4 +1,4 @@
-import { put } from "@vercel/blob";
+// /api/blob-upload.js
 import { nanoid } from "nanoid";
 
 export const config = {
@@ -17,14 +17,23 @@ export default async function handler(req, res) {
     const extension = filename.split(".").pop();
     const blobName = `${filename.split(".")[0]}-${nanoid()}.${extension}`;
 
-    const { url } = await put(blobName, req, {
-      access: "public",
-      token: process.env.vercel_blob_rw_1gPJ4fw1FwfbjoBt_LOaJhewAgf1AWEghdFW7dcaGfOox1A, 
+    const uploadRes = await fetch(`https://blob.vercel-storage.com/upload?slug=${blobName}&access=public`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer vercel_blob_rw_1gPJ4fw1FwfbjoBt_LOaJhewAgf1AWEghdFW7dcaGfOox1A`
+      },
+      body: req
     });
 
-    return res.status(200).json({ url });
+    const data = await uploadRes.json();
+
+    if (!uploadRes.ok) {
+      throw new Error(data.error?.message || "Blob upload failed");
+    }
+
+    return res.status(200).json({ url: data.url });
   } catch (err) {
     console.error("Upload error:", err);
-    return res.status(500).json({ error: "Blob upload failed", details: err.message });
+    return res.status(500).send("A server error occurred.");
   }
 }
