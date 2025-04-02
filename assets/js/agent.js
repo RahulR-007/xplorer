@@ -28,14 +28,16 @@ document.getElementById("uploadForm").addEventListener("submit", async function 
       
         const response = await fetch("https://blob.vercel-storage.com/upload", {
           method: "POST",
+          headers: {
+            Authorization: "Bearer " + "vercel_blob_rw_1gPJ4fw1FwfbjoBt_LOaJhewAgf1AWEghdFW7dcaGfOox1A", // replace
+          },
           body: formData,
         });
       
         const result = await response.json();
         return result.url;
       }
-      
-  
+            
     // Upload all assets
     const [coverImageURL, cardImageURL, ratingImageURL, modelURL] = await Promise.all([
       uploadToBlob(coverImage),
