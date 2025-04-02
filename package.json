@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "busboy": "^1.6.0",
+    "nanoid": "^5.1.5"
+  }
+}
