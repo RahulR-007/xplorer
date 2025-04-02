@@ -1,22 +1,27 @@
 document.getElementById("uploadForm").addEventListener("submit", async function (event) {
     event.preventDefault();
   
-    const placeName = document.getElementById("placeName").value.trim();
-    const locationDesc = document.getElementById("locationDesc").value.trim();
-    const historyDesc = document.getElementById("historyDesc").value.trim();
-    const architectureDesc = document.getElementById("architectureDesc").value.trim();
-    const cultureDesc = document.getElementById("cultureDesc").value.trim();
-    const funFacts = document.getElementById("funFacts").value.trim();
-    const location = document.getElementById("location").value.trim();
-    const imageFile = document.getElementById("imageUpload").files[0];
-    const modelFile = document.getElementById("modelUpload").files[0];
+    const getVal = id => document.getElementById(id).value.trim();
+    const getFile = id => document.getElementById(id).files[0];
   
-    if (!placeName || !locationDesc || !historyDesc || !architectureDesc || !cultureDesc || !funFacts || !location || !imageFile || !modelFile) {
-      alert("Please fill out all fields and upload the necessary files.");
+    const placeName = getVal("placeName");
+    const locationDesc = getVal("locationDesc");
+    const historyDesc = getVal("historyDesc");
+    const architectureDesc = getVal("architectureDesc");
+    const cultureDesc = getVal("cultureDesc");
+    const funFacts = getVal("funFacts");
+    const mapEmbed = getVal("mapEmbed");
+  
+    const coverImage = getFile("coverImage");
+    const cardImage = getFile("cardImage");
+    const ratingImage = getFile("ratingImage");
+    const modelFile = getFile("modelUpload");
+  
+    if (!placeName || !coverImage || !cardImage || !ratingImage || !modelFile) {
+      alert("Please fill all required fields and upload all files.");
       return;
     }
   
-    // ✅ Upload function to Vercel Blob
     async function uploadToBlob(file) {
       const formData = new FormData();
       formData.append("file", file);
@@ -24,24 +29,49 @@ document.getElementById("uploadForm").addEventListener("submit", async function 
         method: "POST",
         body: formData,
       });
-  
       const result = await response.json();
       return result.url;
     }
   
-    // ⬆️ Upload image and 3D model
-    const imageURL = await uploadToBlob(imageFile);
-    const modelURL = await uploadToBlob(modelFile);
+    // Upload all assets
+    const [coverImageURL, cardImageURL, ratingImageURL, modelURL] = await Promise.all([
+      uploadToBlob(coverImage),
+      uploadToBlob(cardImage),
+      uploadToBlob(ratingImage),
+      uploadToBlob(modelFile)
+    ]);
   
-    // ✅ Store or use the URLs
-    console.log("Image URL:", imageURL);
-    console.log("Model URL:", modelURL);
+    // Prepare final data object
+    const placeData = {
+      name: placeName,
+      desc: `${placeName} is one of the world’s most iconic landmarks.`,
+      locationDesc,
+      historyDesc,
+      architectureDesc,
+      cultureDesc,
+      funFacts: funFacts.split(",").map(f => f.trim()),
+      mapEmbed,
+      coverImageURL,
+      cardImageURL,
+      ratingImageURL,
+      modelURL,
+      createdAt: new Date().toISOString()
+    };
   
-    // 👉 Here we just show success and prepare data.
-    document.getElementById("successMessage").classList.remove("hidden");
+    // Send to /api/save-place
+    const save = await fetch("/api/save-place", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ id: placeName.toLowerCase().replace(/\s+/g, "-"), data: placeData })
+    });
   
-    // 🚧 Coming next:
-    // - Store metadata in KV
-    // - Auto-render in visit.html and single dynamic page
+    if (save.ok) {
+      document.getElementById("successMessage").classList.remove("hidden");
+      alert("✅ Place saved to database!");
+    } else {
+      alert("❌ Failed to save place metadata.");
+    }
   });
   
