@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Dashboard - X-Plorer</title>
+    <link rel="stylesheet" href="/assets/css/agent.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">X-Plorer - Agent Panel</div>
+        <ul class="nav-links">            
+            <li><a href="../visit.html">Visit</a></li>
+            <li><a href="#" id="logoutBtn" class="highlighted">Logout</a></li>
+
+        </ul>
+    </nav>
+
+    <main class="container">
+        <h2>Add New Location</h2>
+        <form id="uploadForm">
+            <label for="placeName">Place Name:</label>
+            <input type="text" id="placeName" required>
+
+            <label for="locationDesc">📍 Location:</label>
+            <textarea id="locationDesc" rows="2" required></textarea>
+
+            <label for="historyDesc">🏛️ Historical Significance:</label>
+            <textarea id="historyDesc" rows="3" required></textarea>
+
+            <label for="architectureDesc">🏗️ Architectural Marvel:</label>
+            <textarea id="architectureDesc" rows="3" required></textarea>
+
+            <label for="cultureDesc">🌍 Cultural & Touristic Importance:</label>
+            <textarea id="cultureDesc" rows="3" required></textarea>
+
+            <label for="funFacts">⭐ Fun Facts (Comma-separated):</label>
+            <input type="text" id="funFacts" required>
+
+            <label for="imageUpload">Upload Image:</label>
+            <input type="file" id="imageUpload" accept="image/*" required>
+
+            <label for="modelUpload">Upload 3D Model (GLB):</label>
+            <input type="file" id="modelUpload" accept=".glb" required>
+
+            <label for="location">Google Maps Location Link:</label>
+            <input type="text" id="location" placeholder="Paste Google Maps link here" required>
+
+            <button type="submit">Upload & Generate Page</button>
+        </form>
+        
+        <div id="successMessage" class="hidden">
+            <p>Place added successfully! <a id="newPageLink" href="#">View Page</a></p>
+        </div>
+    </main>
+    <script src="agent.js"></script>
+    <!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js"></script>
+
+<script type="module">
+  // Firebase Config
+  const firebaseConfig = {
+    apiKey: "AIzaSyD-Ooa0zu_3ksyyMFdGza5gCWaQCnir7RA",
+    authDomain: "xplorer-007.firebaseapp.com",
+    projectId: "xplorer-007",
+    storageBucket: "xplorer-007.appspot.com",
+    messagingSenderId: "655828064067",
+    appId: "1:655828064067:web:3ceca43066242033a881f6",
+    measurementId: "G-8LWVJSWZ5B"
+  };
+
+  // Initialize Firebase
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Check auth status
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      // If not logged in, redirect to signin
+      window.location.href = "../signin.html";
+    }
+  });
+
+  // Logout handler
+document.getElementById("logoutBtn").addEventListener("click", (e) => {
+  e.preventDefault();
+  auth.signOut().then(() => {
+    window.location.href = "../signin.html";
+  });
+});
+
+</script>
+
+</body>
+</html>

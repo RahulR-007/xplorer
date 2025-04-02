@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taj Mahal - X-Plorer</title>
+    <link rel="stylesheet" href="/assets/css/places.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">X-Plorer</div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../pages/about.html">About</a></li>
+            <li><a href="../pages/visit.html" class="active">Visit</a></li>
+            <li><a href="../pages/contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <img src="/assets/tajmahal/tajmahal2.png" alt="Taj Mahal">
+            <h1>Taj Mahal</h1>
+            <div class="hero-buttons">
+                <button onclick="scrollToSection('explore')">3D Explore</button>
+                <button onclick="scrollToSection('review')">Review</button>
+                <button onclick="scrollToSection('location')">Location</button>
+            </div>
+        </section>
+
+        <!-- 3D Explore Section -->
+        <section id="explore" class="section">
+            <h2>3D Explore</h2>
+            
+            <model-viewer 
+                    src="/assets/tajmahal/tajmahal.glb    " 
+                    auto-rotate 
+                    camera-controls 
+                    ar 
+                    shadow-intensity="1"
+                    disable-zoom 
+                    interaction-prompt="none"
+                    disable-pan 
+                    disable-tap>
+                </model-viewer>
+                <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+        </section>
+        
+
+        <!-- Review Section -->
+        <section id="review" class="section">            
+            <div class="description-container">
+                <h2>Description and Review</h2>
+            <p><strong>📍 Location:</strong></p>
+            <p>The Taj Mahal is located in <strong>Agra, India</strong>, on the banks of the Yamuna River.</p>
+
+            <p><strong>🏛️ Historical Significance:</strong></p>
+            <p>Built between <strong>1632 and 1653</strong> by the Mughal Emperor <strong>Shah Jahan</strong>, the Taj Mahal is a <strong>UNESCO World Heritage Site</strong> and one of the <strong>Seven Wonders of the World</strong>. It was constructed as a **mausoleum for Mumtaz Mahal**, the emperor’s beloved wife, as a **symbol of his eternal love**.</p>
+
+            <p><strong>🏗️ Architectural Marvel:</strong></p>
+            <ul>
+                <li>Designed in the <strong>Mughal architectural style</strong>, the Taj Mahal is known for its <strong>white marble exterior</strong>, symmetrical design, and intricate inlays of semi-precious stones.</li>
+                <li>The main structure features a <strong>massive dome</strong>, surrounded by <strong>four slender minarets</strong>.</li>
+                <li>It reflects different hues at different times of the day—<strong>pinkish in the morning</strong>, <strong>white in the afternoon</strong>, and <strong>golden under moonlight</strong>.</li>
+            </ul>
+
+            <p><strong>🛕 Interior Details:</strong></p>
+            <ul>
+                <li>The interior houses **cenotaphs of Mumtaz Mahal and Shah Jahan**, while their real graves lie in a lower crypt.</li>
+                <li>The walls are adorned with **calligraphy from the Quran** and intricate floral carvings.</li>
+            </ul>
+
+            <p><strong>🌍 Cultural & Touristic Importance:</strong></p>
+            <ul>
+             <li>The **Taj Mahal attracts millions of visitors annually** from around the world.</li>
+                <li>It is **one of India's most visited monuments**, symbolizing love, art, and history.</li>
+            </ul>
+
+            <p><strong>⭐ Fun Facts:</strong></p>
+    <ul>
+        <li>✅ Took <strong>22 years</strong> to complete with over <strong>20,000 artisans</strong>.</li>
+        <li>✅ The <strong>white marble was sourced from Makrana, Rajasthan</strong>.</li>
+        <li>✅ <strong>Myth:</strong> Some legends say **Shah Jahan wanted to build a black Taj Mahal** opposite to this one, but no evidence supports it.</li>
+    </ul>
+</div>
+             
+    <div class="google-reviews" style="display: flex; justify-content: center; margin-top: 60px;">
+        <a href="https://www.tripadvisor.in/Attraction_Review-g297683-d317329-Reviews-Taj_Mahal-Agra_Agra_District_Uttar_Pradesh.html" target="_blank">
+        <img src="/assets/tajmahal/tajmahal1.jpg" alt="Google Reviews" style="width: 300px; height: 200px; border-radius: 10px; box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);">
+        </a>
+    </div>
+
+        </section>
+
+        <!-- Location Section -->
+        <section id="location" class="section">
+            <h2>Location</h2>
+            <div style="display: flex; justify-content: center; align-items: center; width: 100%; padding: 40px 0;">
+                <div id="embed-map-canvas" style="width: 900px; height: 400px; max-width: 90%; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);">
+                    <iframe 
+                        style="height: 100%; width: 100%; border: 0; border-radius: 10px;" 
+                        frameborder="0" 
+                        allowfullscreen 
+                        src="https://www.google.com/maps/embed/v1/place?q=Taj+Mahal,+Dharmapuri,+Forest+Colony,+Tajganj,+Agra,+Uttar+Pradesh,+India&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+        
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 X-Plorer | Explore the world like never before</p>
+    </footer>
+
+    <script src="/assets/js/places.js"></script>
+</body>
+</html>

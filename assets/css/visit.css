@@ -1,0 +1,239 @@
+html, body {
+  height: 100%;
+  overflow-y: auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1A1A1A, #000000);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;  /* Keep horizontal hidden */
+  height: auto;  /* Allow page to expand */
+}
+
+/* Hide scrollbar for Chrome, Safari, and Edge */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for IE, Edge, and others */
+body {
+  -ms-overflow-style: none;
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding-left: 40px;
+  padding-right: 50px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 10px 15px;
+  font-size: 1.1em;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: white;
+}
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.8em;
+  cursor: pointer;
+  color: white;
+}
+
+/* Visit Section */
+.visit-section {
+  margin-top: 100px;
+  padding: 20px;
+}
+
+.visit-section h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.visit-section p {
+  font-size: 1.2em;
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+/* Places Grid */
+.places-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+  margin-bottom: 120px; /* Increased space to avoid overlap */
+}
+
+/* Place Cards */
+.place-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out;
+}
+
+.place-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  filter: brightness(80%);
+  transition: filter 0.3s ease-in-out;
+}
+
+.place-info {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+}
+
+.place-card:hover {
+  transform: scale(1.05);
+}
+
+.place-card:hover img {
+  filter: brightness(100%);
+}
+
+.place-card:hover .place-info {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Footer */
+footer {
+  padding: 30px;
+  margin-top: 50px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.9em;
+  border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .places-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .nav-links li {
+    padding: 10px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .places-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    backdrop-filter: blur(5px);
+  }
+}
+
+@media (max-width: 768px) {
+  .places-container {
+    margin-bottom: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding: 40px;
+    margin-top: 80px;
+  }
+}
