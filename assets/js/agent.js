@@ -23,15 +23,18 @@ document.getElementById("uploadForm").addEventListener("submit", async function 
     }
   
     async function uploadToBlob(file) {
-      const formData = new FormData();
-      formData.append("file", file);
-      const response = await fetch("/api/blob-upload", {
-        method: "POST",
-        body: formData,
-      });
-      const result = await response.json();
-      return result.url;
-    }
+        const formData = new FormData();
+        formData.append("file", file);
+      
+        const response = await fetch("https://blob.vercel-storage.com/upload", {
+          method: "POST",
+          body: formData,
+        });
+      
+        const result = await response.json();
+        return result.url;
+      }
+      
   
     // Upload all assets
     const [coverImageURL, cardImageURL, ratingImageURL, modelURL] = await Promise.all([
