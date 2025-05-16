@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     function visitNow() {
-        window.location.href = "visit/visit.html";
+        window.location.href = "visit/visit.php";
     }
 
     function hideLoadingScreen() {

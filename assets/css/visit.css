@@ -10,8 +10,8 @@ body {
   background: linear-gradient(135deg, #1A1A1A, #000000);
   color: white;
   text-align: center;
-  overflow-x: hidden;  /* Keep horizontal hidden */
-  height: auto;  /* Allow page to expand */
+  overflow-x: hidden;
+  height: auto;
 }
 
 /* Hide scrollbar for Chrome, Safari, and Edge */
@@ -119,12 +119,12 @@ nav {
 /* Places Grid */
 .places-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
   padding: 20px;
   max-width: 1000px;
   margin: auto;
-  margin-bottom: 120px; /* Increased space to avoid overlap */
+  margin-bottom: 120px;
 }
 
 /* Place Cards */
@@ -134,30 +134,37 @@ nav {
   border-radius: 15px;
   text-decoration: none;
   transition: transform 0.3s ease-in-out;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
+/* Place Image */
 .place-card img {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
   border-radius: 15px;
   filter: brightness(80%);
   transition: filter 0.3s ease-in-out;
 }
 
+/* Overlay Info */
 .place-info {
   position: absolute;
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.6);
-  padding: 10px 20px;
+  padding: 5px 10px;
   border-radius: 10px;
   color: white;
+  font-size: 0.95em;
   font-weight: bold;
-  transition: 0.3s ease-in-out;
 }
 
+/* Hover Effects */
 .place-card:hover {
   transform: scale(1.05);
 }
@@ -208,32 +215,5 @@ footer {
 
   .menu-toggle {
     display: block;
-  }
-
-  .nav-links.show {
-    display: flex;
-  }
-
-  .places-container {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-}
-
-@media (max-width: 768px) {
-  nav {
-    backdrop-filter: blur(5px);
-  }
-}
-
-@media (max-width: 768px) {
-  .places-container {
-    margin-bottom: 150px;
-  }
-}
-
-@media (max-width: 768px) {
-  footer {
-    padding: 40px;
-    margin-top: 80px;
   }
 }

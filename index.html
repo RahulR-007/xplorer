@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>X-plorer - Explore the Unknown</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/chatbot.css">
 </head>
 <body onload="hideLoadingScreen()">
 
@@ -18,10 +19,9 @@
         <nav>
             <div class="logo">X-plorer</div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="/authenticate/agent/agent.html">Login</a></li>
-                <li><a href="visit/visit.html">Visit</a></li>
-                <li><a href="chatbot/chatbot.html">Chat</a></li>
+                <!--<li><a href="index.html" class="active">Home</a></li>-->
+                <li><a href="visit/visit.php">Visit</a></li>
+                <li><a href="authenticate/agent/agent.php">Agent</a></li>
             </ul>
             <div class="menu-toggle">&#9776;</div>
         </nav>
@@ -42,7 +42,7 @@
             <!-- 3D Model -->
             <div class="model-container">
                 <model-viewer 
-                    src="/assets/stylized_planet.glb" 
+                    src="assets/stylized_planet.glb" 
                     auto-rotate 
                     camera-controls 
                     ar 
@@ -61,6 +61,8 @@
         </section>
     </main>
 
+    <script data-id="cmaggfope000dk10bq94oyw86" src="https://tinychat.ai/tinychat.js" async defer></script>
+    
     <footer>
         <p>&copy; 2025 X-plorer | Explore the world like never before | RAHUL | Version 1.1</p>
     </footer>
