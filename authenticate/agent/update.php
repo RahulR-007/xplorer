@@ -29,7 +29,6 @@ $country = trim($_POST['country']);
 $category = trim($_POST['category']);
 $rating = intval($_POST['rating']);
 
-// Upload settings
 $uploadDir = dirname(__DIR__, 2) . "/uploads/";
 $publicPath = "/dashboard/xplorer/uploads/";
 $maxSize = 5 * 1024 * 1024; // 5 MB
@@ -57,18 +56,15 @@ function saveFileIfUploaded($field, $uploadDir, $publicPath) {
     return null;
 }
 
-// ✅ Validate sizes for images (not model)
 validateFileSize($_FILES['coverImage'], $maxSize, "Cover Image");
 validateFileSize($_FILES['cardImage'], $maxSize, "Card Image");
 validateFileSize($_FILES['ratingImage'], $maxSize, "Rating Image");
 
-// Save uploads (model can be any size)
 $coverImage = saveFileIfUploaded('coverImage', $uploadDir, $publicPath);
 $cardImage = saveFileIfUploaded('cardImage', $uploadDir, $publicPath);
 $ratingImage = saveFileIfUploaded('ratingImage', $uploadDir, $publicPath);
 $modelUpload = saveFileIfUploaded('modelUpload', $uploadDir, $publicPath);
 
-// Build dynamic SQL
 $sql = "UPDATE places SET 
     location_desc = ?, history_desc = ?, architecture_desc = ?, culture_desc = ?,
     fun_facts = ?, map_embed = ?, place_link = ?, place_keywords = ?, 
@@ -81,7 +77,6 @@ $params = [
 ];
 $types = "ssssssssssi";
 
-// Conditionally add uploaded files
 if ($coverImage !== null) {
     $sql .= ", cover_image = ?";
     $params[] = $coverImage;
@@ -108,7 +103,6 @@ $params[] = $originalName;
 $params[] = $email;
 $types .= "ss";
 
-// Execute update
 $stmt = $conn->prepare($sql);
 $stmt->bind_param($types, ...$params);
 

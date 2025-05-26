@@ -1,10 +1,9 @@
 <?php
-// signup.php
 
 $host = 'localhost';
 $user = 'root';
-$password = ''; // default XAMPP password
-$db = 'xplorer_db'; // your DB name
+$password = ''; 
+$db = 'xplorer_db';
 
 $conn = new mysqli($host, $user, $password, $db);
 
@@ -19,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-        // Check for duplicate email
         $check = $conn->prepare("SELECT email FROM users WHERE email = ?");
         $check->bind_param("s", $email);
         $check->execute();

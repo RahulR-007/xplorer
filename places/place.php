@@ -66,8 +66,6 @@ if (!$data) {
 </section>
 
 
-
-    <!-- 3D Explore Section -->
     <section id="explore" class="section" style="position:relative;">
       <h2>3D Explore</h2>
       <div style="position:relative;display:flex;justify-content:center;">
@@ -86,7 +84,6 @@ if (!$data) {
       <script src="/dashboard/xplorer/assets/js/places.js"></script>
     </section>
 
-    <!-- Review Section -->
     <section id="review" class="section">            
       <div class="description-container">
         <h2>Description and Review</h2>
@@ -122,7 +119,6 @@ if (!$data) {
       <?php endif; ?>
     </section>
 
-    <!-- Location Section -->
     <section id="location" class="section">
       <h2>Location</h2>
       <div style="display: flex; justify-content: center; align-items: center; width: 100%; padding: 40px 0;">

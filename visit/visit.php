@@ -30,7 +30,7 @@ if (!empty($category)) {
 if (!empty($rating)) {
   $query .= " AND rating = ?";
   $params[] = $rating;
-  $types .= "i"; // Rating is an integer, so use 'i' here
+  $types .= "i"; 
 }
 
 $query .= " ORDER BY created_at DESC";
@@ -65,7 +65,6 @@ $result = $stmt->get_result();
       <h1>Explore the Wonders of the World in 3D</h1>
       <p>Step into history and experience breathtaking monuments in immersive 3D.</p>
 
-      <!-- 🔍 Search and Filters -->
       <form method="GET" action="visit.php" style="margin: 20px auto; max-width: 700px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
         <input type="text" name="search" placeholder="Search by place name or keyword..." value="<?= htmlspecialchars($searchTerm) ?>" style="padding: 10px; width: 60%; border-radius: 10px; border: none;">
 
@@ -74,7 +73,6 @@ $result = $stmt->get_result();
           <option value="India" <?= $location === 'India' ? 'selected' : '' ?>>India</option>
           <option value="Egypt" <?= $location === 'Egypt' ? 'selected' : '' ?>>Egypt</option>
           <option value="Italy" <?= $location === 'Italy' ? 'selected' : '' ?>>Italy</option>
-          <!-- Add more based on your data -->
         </select>
 
         <select name="category" style="padding: 10px; border-radius: 10px;">
@@ -82,7 +80,6 @@ $result = $stmt->get_result();
           <option value="Temple" <?= $category === 'Temple' ? 'selected' : '' ?>>Temple</option>
           <option value="Fort" <?= $category === 'Fort' ? 'selected' : '' ?>>Fort</option>
           <option value="Palace" <?= $category === 'Palace' ? 'selected' : '' ?>>Palace</option>
-          <!-- Add more -->
         </select>
 
         <select name="rating" style="padding: 10px; border-radius: 10px;">
@@ -102,7 +99,6 @@ $result = $stmt->get_result();
         <p style="color: lightgray;">Showing all places. Use the search bar or filters to narrow down results.</p>
       <?php endif; ?>
 
-      <!-- 📍 Results -->
       <div class="places-container">
         <?php if ($result->num_rows > 0): ?>
           <?php while ($row = $result->fetch_assoc()): ?>

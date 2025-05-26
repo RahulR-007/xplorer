@@ -13,12 +13,10 @@ if ($conn->connect_error) {
 }
 $conn->set_charset("utf8mb4");
 
-// ✅ Input sanitizer
 function cleanInput($data) {
     return trim(strip_tags($data));
 }
 
-// ✅ Save all inputs
 $inputs = [
     'placeName', 'placeKeywords', 'locationDesc', 'historyDesc', 'architectureDesc',
     'cultureDesc', 'funFacts', 'mapEmbed', 'placeLink', 'country', 'category', 'rating'
@@ -32,11 +30,9 @@ $_SESSION['form_data'] = $form_data;
 extract($form_data);
 $rating = (int)$rating;
 
-// ✅ File Uploads
 $uploadDir  = dirname(__DIR__, 2) . "/uploads/";
 $publicPath = "/dashboard/xplorer/uploads/";
 
-// ✅ Improved file upload handler
 function saveFile($field, $uploadDir, $publicPath, $allowedTypes, $strictMime = true) {
     $originalName = $_FILES[$field]["name"];
     $fileTmpPath  = $_FILES[$field]["tmp_name"];
@@ -73,7 +69,6 @@ function saveFile($field, $uploadDir, $publicPath, $allowedTypes, $strictMime = 
     }
 }
 
-// ✅ Upload and validate files
 $cover_image  = saveFile("coverImage", $uploadDir, $publicPath, ['jpg', 'jpeg', 'png']);
 $card_image   = saveFile("cardImage", $uploadDir, $publicPath, ['jpg', 'jpeg', 'png']);
 $model_file   = saveFile("modelUpload", $uploadDir, $publicPath, ['glb'], false); // Allow glb fallback
@@ -83,7 +78,6 @@ if (!empty($_FILES['ratingImage']['name'])) {
     $rating_image = saveFile("ratingImage", $uploadDir, $publicPath, ['jpg', 'jpeg', 'png']);
 }
 
-// ✅ Insert into DB
 try {
     $stmt = $conn->prepare("INSERT INTO places (
         place_name, location_desc, history_desc, architecture_desc, culture_desc,

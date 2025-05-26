@@ -5,7 +5,6 @@ if (!isset($_SESSION['email'])) {
     exit();
 }
 
-// Fetch previously entered data
 function getVal($field) {
     return isset($_SESSION['form_data'][$field]) ? htmlspecialchars($_SESSION['form_data'][$field]) : '';
 }

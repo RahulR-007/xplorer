@@ -3,8 +3,8 @@ session_start();
 
 $host = 'localhost';
 $user = 'root';
-$password = ''; // Default XAMPP password
-$db = 'xplorer_db'; // Your DB name
+$password = ''; 
+$db = 'xplorer_db'; 
 
 $conn = new mysqli($host, $user, $password, $db);
 
@@ -16,13 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
     $password = trim($_POST['password']);
 
-    // Fetch user
     $stmt = $conn->prepare("SELECT password FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
-    // User found
     if ($stmt->num_rows > 0) {
         $stmt->bind_result($hashedPassword);
         $stmt->fetch();

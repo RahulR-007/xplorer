@@ -14,9 +14,9 @@ $db = "xplorer_db";
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) die("Connection failed: " . $conn->connect_error);
 
-$place = $_GET['place'] ?? '';  // Use the place parameter from the URL
+$place = $_GET['place'] ?? '';  
 if (empty($place)) {
-    header("Location: agent.php"); // Redirect if 'place' parameter is missing
+    header("Location: agent.php"); 
     exit();
 }
 
@@ -27,8 +27,7 @@ $result = $stmt->get_result();
 $data = $result->fetch_assoc();
 
 if (!$data) {
-    // If place is not found or the user is not authorized, redirect back to the form
-    header("Location: agent.php"); // Or any other page that lists places
+    header("Location: agent.php"); 
     exit();
 }
 ?>

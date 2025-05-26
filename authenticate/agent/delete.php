@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Check if agent is logged in
 if (!isset($_SESSION['email'])) {
     header("Location: ../signin.php");
     exit();
@@ -9,7 +8,6 @@ if (!isset($_SESSION['email'])) {
 
 $agentEmail = $_SESSION['email'];
 
-// Validate input
 if (!isset($_GET['place'])) {
     echo "<script>alert('❌ Invalid request: No place specified.'); window.location.href = 'agent.php';</script>";
     exit();
@@ -17,14 +15,12 @@ if (!isset($_GET['place'])) {
 
 $placeName = $_GET['place'];
 
-// DB Connection
 $conn = new mysqli("localhost", "root", "", "xplorer_db");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if place exists and is owned by the current agent
-$checkStmt = $conn->prepare("SELECT * FROM places WHERE place_name = ? AND email = ?");
+checkStmt = $conn->prepare("SELECT * FROM places WHERE place_name = ? AND email = ?");
 $checkStmt->bind_param("ss", $placeName, $agentEmail);
 $checkStmt->execute();
 $result = $checkStmt->get_result();
@@ -37,7 +33,6 @@ if ($result->num_rows === 0) {
 }
 $checkStmt->close();
 
-// Delete the place
 $deleteStmt = $conn->prepare("DELETE FROM places WHERE place_name = ? AND email = ?");
 $deleteStmt->bind_param("ss", $placeName, $agentEmail);
 

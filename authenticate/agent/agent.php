@@ -15,7 +15,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get agent's name
 $nameQuery = $conn->prepare("SELECT name FROM users WHERE email = ?");
 $nameQuery->bind_param("s", $email);
 $nameQuery->execute();
@@ -23,7 +22,6 @@ $nameResult = $nameQuery->get_result();
 $nameRow = $nameResult->fetch_assoc();
 $agentName = $nameRow['name'] ?? 'Agent';
 
-// Get agent's places
 $placesQuery = $conn->prepare("SELECT place_name FROM places WHERE email = ?");
 $placesQuery->bind_param("s", $email);
 $placesQuery->execute();

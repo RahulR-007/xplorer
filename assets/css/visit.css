@@ -14,22 +14,18 @@ body {
   height: auto;
 }
 
-/* Hide scrollbar for Chrome, Safari, and Edge */
 body::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide scrollbar for Firefox */
 html {
   scrollbar-width: none;
 }
 
-/* Hide scrollbar for IE, Edge, and others */
 body {
   -ms-overflow-style: none;
 }
 
-/* Navbar */
 nav {
   display: flex;
   justify-content: space-between;
@@ -99,7 +95,6 @@ nav {
   color: white;
 }
 
-/* Visit Section */
 .visit-section {
   margin-top: 100px;
   padding: 20px;
@@ -116,7 +111,6 @@ nav {
   margin-bottom: 30px;
 }
 
-/* Places Grid */
 .places-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -127,7 +121,6 @@ nav {
   margin-bottom: 120px;
 }
 
-/* Place Cards */
 .place-card {
   position: relative;
   overflow: hidden;
@@ -140,7 +133,6 @@ nav {
   justify-content: flex-end;
 }
 
-/* Place Image */
 .place-card img {
   width: 100%;
   height: 100%;
@@ -150,7 +142,6 @@ nav {
   transition: filter 0.3s ease-in-out;
 }
 
-/* Overlay Info */
 .place-info {
   position: absolute;
   bottom: 10px;
@@ -164,7 +155,6 @@ nav {
   font-weight: bold;
 }
 
-/* Hover Effects */
 .place-card:hover {
   transform: scale(1.05);
 }
@@ -177,7 +167,6 @@ nav {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* Footer */
 footer {
   padding: 30px;
   margin-top: 50px;
@@ -187,7 +176,7 @@ footer {
   border-radius: 10px;
 }
 
-/* Responsive */
+
 @media (max-width: 1024px) {
   .places-container {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
