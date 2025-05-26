@@ -24,6 +24,7 @@ function getVal($field) {
 <nav class="navbar">
     <div class="logo">X-Plorer - Agent Panel</div>
     <ul class="nav-links">
+        <li><a href="agent.php">Dashboard</a></li>
         <li><a href="../../visit/visit.php">Visit</a></li>
         <li><a href="?logout=true" class="highlighted">Logout</a></li>
     </ul>

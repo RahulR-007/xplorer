@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - X-Plorer</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/visit.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">X-Plorer</div>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="visit.php">Visit</a></li>
+    </ul>
+    <div class="menu-toggle">&#9776;</div>
+  </nav>
+
+  <!-- About Section -->
+  <main class="visit-section">
+    <h1>About X-Plorer</h1>
+    <p>Welcome to X-Plorer, your intelligent travel companion!</p>
+
+    <p>
+      X-Plorer is designed to redefine how tourists experience destinations. With immersive 3D visuals, 
+      personalized recommendations, and a smart chatbot assistant, you can explore the wonders of the world like never before.
+    </p>
+
+    <p>
+      Whether you're interested in historical facts, architectural brilliance, cultural relevance, or fun trivia, 
+      X-Plorer presents it all in one seamless platform. Powered by modern web technology and Firebase-based authentication, 
+      it's built to scale and serve with ease.
+    </p>
+
+    <p>
+      Built with ❤️ using HTML, CSS, JavaScript, and PHP. Managed by an intuitive agent dashboard to keep the content fresh and evolving.
+    </p>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 X-Plorer | Explore the world like never before</p>
+  </footer>
+
+  <!-- JS (if menu toggle is needed) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('show');
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

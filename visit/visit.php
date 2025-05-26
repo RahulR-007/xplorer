@@ -47,7 +47,6 @@ $result = $stmt->get_result();
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>X-Plorer | Visit Places</title>
   <link rel="stylesheet" href="../assets/css/style.css" />
-  <link rel="stylesheet" href="../assets/css/chatbot.css" />
   <link rel="stylesheet" href="../assets/css/visit.css" />
 </head>
 <body>
@@ -56,7 +55,7 @@ $result = $stmt->get_result();
       <div class="logo">X-Plorer</div>
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="../pages/about.html">About</a></li>
+        <li><a href="about.html">About</a></li>
       </ul>
     </nav>
   </header>
